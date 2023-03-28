@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import "./profile.css";
+// import "./profile.css";
 const Profile = () => {
   const [users, setUsers] = useState([]);
   const [oldUsers, setOldUsers] = useState([]);
@@ -55,13 +55,6 @@ const Profile = () => {
                 <h2 className="name">{user.firstName}</h2>
                 <p className="title">{user.department}</p>
                 <p className="location">Seoul, South Korea</p>
-                <div className="interests">
-                  <p className="interests_title">Interests: </p>
-                  <span className="interests_item">A.I.</span>
-                  <span className="interests_item">Technology</span>
-                  <span className="interests_item">Coding</span>
-                  <span className="interests_item">Python</span>
-                </div>
               </div>
             </div>
           </Link>

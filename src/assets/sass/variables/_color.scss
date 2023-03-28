@@ -2,10 +2,10 @@
 $white: #ffffff !default;
 $black: #000000 !default;
 
-$primary: #4fc3f7 !default;
-$secondary: #66bb6a !default;
+$primary: #4b49ac !default;
+$secondary: #98bdff !default;
 
-$green: #249F5D !default;
+$green: #249f5d !default;
 $red: #ef5350 !default;
 
 //Color Palette
@@ -15,7 +15,7 @@ $colorMap: (
     "base": $white,
   ),
   "black": (
-    "base": $black
+    "base": $black,
   ),
   "primary": (
     "base": $primary,
@@ -26,6 +26,7 @@ $colorMap: (
     "base": $secondary,
     "dark": darken($secondary, 10%),
     "light": lighten($secondary, 10%),
+    "lighter": lighten($secondary, 18%),
   ),
   "danger": (
     "base": $red,
@@ -38,21 +39,21 @@ $colorMap: (
     "dark": darken($green, 10%),
   ),
   "grey": (
-    'base': #f5f8fa,
-    'disabled': #e6ebee,
-    '1': #f9f9f9,
-    '2': #b8c2c8,
-    '3': #959595,
-    '4': #333333,
-    '5': rgba($black, 0.2),
-    '6': rgba($black, 0.6)
-  )
+    "base": #f5f8fa,
+    "disabled": #e6ebee,
+    "1": #f9f9f9,
+    "2": #b8c2c8,
+    "3": #959595,
+    "4": #333333,
+    "5": rgba($black, 0.2),
+    "6": rgba($black, 0.6),
+    "7": #e6e6e6,
+  ),
 );
-
 
 // @@ This color map is used for Buttons
 $theme-colors: (
-  'primary': $primary,
-  'secondary': $secondary,
-  'danger': getColor('danger.base'),
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": getColor("danger.base"),
 );
