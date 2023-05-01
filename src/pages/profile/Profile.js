@@ -5,6 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 const Profile = () => {
   const [users, setUsers] = useState([]);
   const [oldUsers, setOldUsers] = useState([]);
+  const [inputVal, setInputVal] = useState("");
   const fetchUserData = () => {
     fetch("https://dummyjson.com/users")
       .then((response) => {
@@ -26,20 +27,21 @@ const Profile = () => {
   const filterBySearch = (event) => {
     const value = event.target.value;
     let updatedList = [...users];
-    if (value.length > 0) {
-      updatedList = updatedList.filter((item) => {
+    if (value !== "") {
+      updatedList = oldUsers.filter((item) => {
         return item.firstName.toLowerCase().indexOf(value.toLowerCase()) !== -1;
       });
       setUsers(updatedList);
     } else {
       setUsers(oldUsers);
     }
+    setInputVal(value);
   };
 
   return (
     <>
       <div className="search-input">
-        <input type="text" onChange={filterBySearch} />
+        <input type="text" onChange={filterBySearch} value={inputVal} />
         <div>{users.length}</div>
       </div>
       {users.map((user, index) => {
