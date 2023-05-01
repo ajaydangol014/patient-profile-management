@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import Table from "../../components/table/Table";
 
 // import "./profile.css";
 const Profile = () => {
@@ -38,30 +39,48 @@ const Profile = () => {
     setInputVal(value);
   };
 
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Id",
+        accessor: "id", // accessor is the "key" in the data
+      },
+      {
+        Header: "First Name",
+        accessor: "firstName",
+      },
+      {
+        Header: "Last Name",
+        accessor: "lastName",
+      },
+
+      {
+        Header: "Age",
+        accessor: "age",
+      },
+      {
+        Header: "Email",
+        accessor: "email",
+      },
+    ],
+    []
+  );
+
+  const tableData = React.useMemo(() => [
+    users.map((user) => {
+      return Object(user);
+    }),
+  ]);
+
   return (
     <>
+      <div>
+        <h2>Patient Profile</h2>
+      </div>
       <div className="search-input">
         <input type="text" onChange={filterBySearch} value={inputVal} />
-        <div>{users.length}</div>
       </div>
-      {users.map((user, index) => {
-        return (
-          <Link to={`/profile/${user.id}`} key={index}>
-            <div className="card">
-              <div className="left">
-                <div className="img">
-                  <img className="profile_img" src={user.image} alt="" />
-                </div>
-              </div>
-              <div className="right">
-                <h2 className="name">{user.firstName}</h2>
-                <p className="title">{user.department}</p>
-                <p className="location">Seoul, South Korea</p>
-              </div>
-            </div>
-          </Link>
-        );
-      })}
+      <Table columns={columns} data={tableData[0]} />
     </>
   );
 };
