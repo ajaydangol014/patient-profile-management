@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Table from "../../components/table/Table";
 
 // import "./profile.css";
@@ -62,6 +62,16 @@ const Profile = () => {
         Header: "Email",
         accessor: "email",
       },
+      {
+        width: 300,
+        Header: "Action",
+        accessor: "action",
+        Cell: (cell) => (
+          <button value={cell.accessor} className="btn btn-success">
+            Button
+          </button>
+        ),
+      },
     ],
     []
   );
@@ -70,6 +80,7 @@ const Profile = () => {
     users.map((user) => {
       return Object(user);
     }),
+    [],
   ]);
 
   return (
@@ -80,6 +91,9 @@ const Profile = () => {
       <div className="search-input">
         <input type="text" onChange={filterBySearch} value={inputVal} />
       </div>
+      <Link to={`/profile/add`} className="btn btn-primary">
+        Add Patient
+      </Link>
       <Table columns={columns} data={tableData[0]} />
     </>
   );
