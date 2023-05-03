@@ -55,6 +55,15 @@
       color: getColor("secondary.base");
     }
   }
+
+  @include m(danger) {
+    background: getColor("danger.base");
+    color: getColor("white.base");
+
+    &:hover {
+      color: getColor("secondary.base");
+    }
+  }
 }
 
 .btn-outlined {

@@ -39,9 +39,7 @@ const App = () => {
               </div>
             </div>
             <div className="guide-content">
-              <div className="container">
-                <AppRouter />
-              </div>
+              <AppRouter />
             </div>
           </div>
         </div>
