@@ -3,8 +3,16 @@ import { ErrorMessage, Field, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import WellContainer from "../../components/well/WellContainer";
+import { profileValidationSchema } from "./constant";
 
 const ProfileAdd = () => {
+  const profileInitialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    designation: "",
+  };
+
   const submitHandler = async (values, { setSubmitting }) => {
     const payload = {
       firstName: values.firstName,
@@ -24,19 +32,8 @@ const ProfileAdd = () => {
   return (
     <WellContainer title="Add New Patient">
       <Formik
-        initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-          designation: "",
-        }}
-        validationSchema={Yup.object({
-          firstName: Yup.string().required("Required"),
-          lastName: Yup.string().required("Required"),
-          email: Yup.string()
-            .email("Invalid Email Address")
-            .required("Required"),
-        })}
+        initialValues={profileInitialValues}
+        validationSchema={profileValidationSchema}
         onSubmit={submitHandler}
       >
         {(formik) => (
