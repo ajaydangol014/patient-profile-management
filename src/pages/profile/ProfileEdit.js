@@ -16,7 +16,13 @@ const ProfileEdit = () => {
     email: "",
     designation: "",
   };
-  const [user, setUser] = useState({});
+  const [user, setUsers] = useState({});
+  const fetchUserData = () => {
+    fetch("https://dummyjson.com/users").then((response) => {
+      return response.json();
+      setUsers(response.json);
+    });
+  };
 
   const submitHandler = (values, { setSubmitting }) => {
     editPatient(values, setSubmitting);
@@ -38,7 +44,6 @@ const ProfileEdit = () => {
     }
   };
 
-  const fetchUserData = () => {};
   return (
     <WellContainer title="Edit Patient">
       <Formik
@@ -46,17 +51,15 @@ const ProfileEdit = () => {
         validationSchema={profileValidationSchema}
         onSubmit={submitHandler}
       >
-        {(formik, setFieldValue) => (
+        {(formik) => (
           // useEffect(()=>{
+          //   fetchUserData();
           //   if(!isProfileAdd){
-          //     fetch(`https://dummyjson.com/users/${id}`)
-          //     .then((user) => {
-          //       const fields = ['id','firstName', 'lastName', 'email'];
-          //       fields.forEach(field => setFieldValue(field, user[field], false));
-          //         setUser(user);
-          //     });
+          //     const fields = ['id','firstName', 'lastName', 'email'];
+          //     fields.forEach(field => formik.setFieldValue(field, user[field], false));
           //   }
-          // }, []);
+          // },[]);
+
           <ProfileForm formik={formik} />
         )}
       </Formik>
