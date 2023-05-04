@@ -16,7 +16,9 @@ const Dialog = (props) => {
           <p>Are you sure want to delete it?</p>
         </div>
         <div className="dialog-footer">
-          <button className="btn btn--danger">Yes</button>
+          <button className="btn btn--danger" onClick={props.handleEvent}>
+            Yes
+          </button>
           <button className="btn btn--primary" onClick={props.onClose}>
             No
           </button>

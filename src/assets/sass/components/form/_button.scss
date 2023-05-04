@@ -64,6 +64,15 @@
       color: getColor("secondary.base");
     }
   }
+
+  @include m(success) {
+    background: getColor("success.base");
+    color: getColor("white.base");
+
+    &:hover {
+      color: getColor("secondary.base");
+    }
+  }
 }
 
 .btn-outlined {

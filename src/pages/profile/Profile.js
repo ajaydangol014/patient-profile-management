@@ -7,10 +7,15 @@ import Dialog from "../../components/dialog/Dialog";
 // import "./profile.css";
 const Profile = () => {
   const [users, setUsers] = useState([]);
-  const [oldUsers, setOldUsers] = useState([]);
   const [inputVal, setInputVal] = useState("");
-
   const [open, setOpen] = useState(false);
+  const [id, setId] = useState();
+  const filteredSearchData = [
+    users.filter((user) =>
+      user.firstName.toLowerCase().includes(inputVal.toLowerCase())
+    ),
+  ];
+  const tableData = filteredSearchData;
   const fetchUserData = () => {
     fetch("https://dummyjson.com/users")
       .then((response) => {
@@ -18,7 +23,6 @@ const Profile = () => {
       })
       .then((data) => {
         setUsers(data.users);
-        setOldUsers(data.users);
       })
       .catch((error) => {
         console.log(error);
@@ -31,60 +35,67 @@ const Profile = () => {
 
   const filterBySearch = (event) => {
     const value = event.target.value;
-    let updatedList = [...users];
-    if (value !== "") {
-      updatedList = oldUsers.filter((item) => {
-        return item.firstName.toLowerCase().indexOf(value.toLowerCase()) !== -1;
-      });
-      setUsers(updatedList);
-    } else {
-      setUsers(oldUsers);
-    }
     setInputVal(value);
   };
 
-  // const deletePatientProfile=async(id){
-  //   const payload={
-  //     id:id
-  //   }
-  // }
+  const deletePatientProfile = async (id) => {
+    const payload = {
+      id: id,
+    };
+    try {
+      const response = await axios.delete("url", payload);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  const deleteAlert = (event) => {
-    const value = event.target.value;
+  const deleteEvent = () => {
+    // deletePatientProfile(id);
+    const filterRetrieveData = users.filter((x) => x.id !== Number(id));
+    setUsers(filterRetrieveData);
   };
 
   const openDialog = (event) => {
     setOpen(true);
+    const value = event.target.value;
+    setId(value);
   };
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Id",
-        accessor: "id", // accessor is the "key" in the data
-      },
-      {
-        Header: "First Name",
-        accessor: "firstName",
-      },
-      {
-        Header: "Last Name",
-        accessor: "lastName",
-      },
+  const columns = [
+    {
+      Header: "Id",
+      accessor: "id", // accessor is the "key" in the data
+    },
+    {
+      Header: "First Name",
+      accessor: "firstName",
+    },
+    {
+      Header: "Last Name",
+      accessor: "lastName",
+    },
 
-      {
-        Header: "Age",
-        accessor: "age",
-      },
-      {
-        Header: "Email",
-        accessor: "email",
-      },
-      {
-        width: 300,
-        Header: "Action",
-        accessor: "action",
-        Cell: (cell) => (
+    {
+      Header: "Age",
+      accessor: "age",
+    },
+    {
+      Header: "Email",
+      accessor: "email",
+    },
+    {
+      width: 300,
+      Header: "Action",
+      accessor: "action",
+      Cell: (cell) => (
+        <div className="action-btn">
+          <Link
+            to={`/profile/edit/${cell.row.id}`}
+            value={cell.row.id}
+            className="btn btn--success"
+          >
+            Edit
+          </Link>
           <button
             value={cell.row.id}
             className="btn btn--danger"
@@ -92,18 +103,10 @@ const Profile = () => {
           >
             Delete
           </button>
-        ),
-      },
-    ],
-    []
-  );
-
-  const tableData = React.useMemo(() => [
-    users.map((user) => {
-      return Object(user);
-    }),
-    [],
-  ]);
+        </div>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -124,7 +127,9 @@ const Profile = () => {
         </Link>
       </div>
       <Table columns={columns} data={tableData[0]} />
-      {open && <Dialog onClose={() => setOpen(false)} />}
+      {open && (
+        <Dialog onClose={() => setOpen(false)} handleEvent={deleteEvent} />
+      )}
     </>
   );
 };
