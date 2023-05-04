@@ -6,6 +6,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Profile from "../pages/profile/Profile";
 import ProfileDetail from "../pages/profile/ProfileDetail";
 import ProfileAdd from "../pages/profile/ProfileAdd";
+import ProfileEdit from "../pages/profile/ProfileEdit";
 
 export default function AppRouter() {
   return (
@@ -16,6 +17,7 @@ export default function AppRouter() {
       <Route path="profile" element={<Profile />}></Route>
       <Route path="profile/:id" element={<ProfileDetail />}></Route>
       <Route path="profile/add" element={<ProfileAdd />}></Route>
+      <Route path="profile/edit/:id" element={<ProfileEdit />}></Route>
     </Routes>
   );
 }

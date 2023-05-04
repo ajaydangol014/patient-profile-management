@@ -1,9 +1,10 @@
 import axios from "axios";
-import { ErrorMessage, Field, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import WellContainer from "../../components/well/WellContainer";
 import { profileValidationSchema } from "./constant";
+import ProfileForm from "./ProfileForm";
 
 const ProfileAdd = () => {
   const profileInitialValues = {
@@ -36,59 +37,7 @@ const ProfileAdd = () => {
         validationSchema={profileValidationSchema}
         onSubmit={submitHandler}
       >
-        {(formik) => (
-          <form onSubmit={formik.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <Field
-                type="text"
-                name="firstName"
-                id="firstName"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.firstName}
-                {...formik.getFieldProps("firstName")}
-              />
-              <div className="error-message">
-                <ErrorMessage name="firstName" />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <Field
-                type="text"
-                name="lastName"
-                id="lastName"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.lastName}
-                {...formik.getFieldProps("lastName")}
-              />
-              <div className="error-message">
-                <ErrorMessage name="lastName" />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <Field
-                type="email"
-                name="email"
-                id="email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-                {...formik.getFieldProps("email")}
-              />
-              <div className="error-message">
-                <ErrorMessage name="email" />
-              </div>
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </form>
-        )}
+        {(formik) => <ProfileForm formik={formik} />}
       </Formik>
     </WellContainer>
   );

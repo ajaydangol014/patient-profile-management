@@ -53,6 +53,7 @@ const Profile = () => {
     // deletePatientProfile(id);
     const filterRetrieveData = users.filter((x) => x.id !== Number(id));
     setUsers(filterRetrieveData);
+    setOpen(false);
   };
 
   const openDialog = (event) => {
