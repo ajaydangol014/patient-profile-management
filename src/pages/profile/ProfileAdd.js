@@ -8,21 +8,29 @@ import ProfileForm from "./ProfileForm";
 
 const ProfileAdd = () => {
   const profileInitialValues = {
-    firstName: "",
-    lastName: "",
+    patient_name: "",
+    age: "",
+    dob: "",
     email: "",
-    designation: "",
+    special_attention: "",
   };
 
   const submitHandler = async (values, { setSubmitting }) => {
     const payload = {
-      firstName: values.firstName,
-      lastName: values.lastName,
+      patient_name: values.patient_name,
+      userId: 1,
+      allergy_id: 1,
+      age: Number(values.age),
+      dob: values.dob,
       email: values.email,
+      special_attention: false,
     };
 
     try {
-      const response = await axios.post("url", payload);
+      const response = await axios.post(
+        "http://localhost:5000/api/patient-profile/add",
+        payload
+      );
       console.log(response.data);
     } catch (e) {
       console.log(e);
