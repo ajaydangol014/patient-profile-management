@@ -5,47 +5,14 @@ import { Link } from "react-router-dom";
 import "./docs/docs.scss";
 
 import AppRouter from "./routes/routes";
+import Navbar from "./components/navbar/Navbar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 const App = () => {
   return (
     <>
       <Router>
-        <nav className="navbar">
-          <div className=" navbar__flex px-4x">
-            <div className="navbar__header">
-              <h1>Patient Profile Management</h1>
-            </div>
-            <div className="navbar__list">
-              <Link to="/" className="navbar__item">
-                Ajay Dangol
-              </Link>
-            </div>
-          </div>
-        </nav>
-        <div className="">
-          <div className="guide-wrapper d-flex">
-            <div className="sidebar sidebar--bordered-right-1x">
-              <div className="menu-group">
-                <Link
-                  to="/dashboard"
-                  className="menu-group__nodes__single"
-                  activeClassName="menu-group__nodes__single--active"
-                >
-                  Dashboard
-                </Link>
-                <Link to="/profile" className="menu-group__nodes__single">
-                  Patient Profile
-                </Link>
-                <Link to="/allergy" className="menu-group__nodes__single">
-                  Allergy
-                </Link>
-              </div>
-            </div>
-            <div className="guide-content">
-              <AppRouter />
-            </div>
-          </div>
-        </div>
+        <AppRouter />
       </Router>
     </>
   );
