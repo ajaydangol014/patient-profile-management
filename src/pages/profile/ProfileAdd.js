@@ -2,8 +2,8 @@ import axios from "axios";
 import { Formik } from "formik";
 import React from "react";
 import WellContainer from "../../components/well/WellContainer";
-import { profileValidationSchema } from "./constant";
 import ProfileForm from "./ProfileForm";
+import { profileValidationSchema } from "../../constants/constant";
 
 const ProfileAdd = () => {
   const profileInitialValues = {

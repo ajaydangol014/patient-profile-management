@@ -1,11 +1,10 @@
 import axios from "axios";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import * as Yup from "yup";
 import WellContainer from "../../components/well/WellContainer";
-import { profileValidationSchema } from "./constant";
 import { useParams } from "react-router-dom";
 import ProfileForm from "./ProfileForm";
+import { profileValidationSchema } from "../../constants/constant";
 
 const ProfileEdit = () => {
   const { id } = useParams();
