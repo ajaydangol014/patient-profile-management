@@ -1,4 +1,3 @@
-const { all } = require("../routes/api.routes");
 const AllergyService = require("../services/allergy.services");
 
 exports.getAllergy = async function (req, res, next) {

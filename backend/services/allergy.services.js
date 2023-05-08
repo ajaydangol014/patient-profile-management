@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 exports.getAllergy = async function (query) {
   try {
-    const allergyData = await prisma.allergy.findMany({
+    const allergyData = await prisma.Allergy.findMany({
       include: { user: true },
     });
     return allergyData;
