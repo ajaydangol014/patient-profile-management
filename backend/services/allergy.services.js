@@ -11,3 +11,12 @@ exports.getAllergy = async function (query) {
     throw Error("Error while retrieving Allergy data");
   }
 };
+
+exports.saveAllergy = async function (query) {
+  try {
+    const allergyData = await prisma.Allergy.create({ query });
+    return allergyData;
+  } catch (error) {
+    throw Error("Error while retrieving Allergy data");
+  }
+};

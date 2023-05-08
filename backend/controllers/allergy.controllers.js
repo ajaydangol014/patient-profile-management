@@ -8,3 +8,13 @@ exports.getAllergy = async function (req, res, next) {
     next(error);
   }
 };
+
+exports.saveAllergy = async function (req, res, next) {
+  console.log(req);
+  try {
+    const allergy = await AllergyService.saveAllergy({ req });
+    res.json(allergy);
+  } catch (error) {
+    next(error);
+  }
+};

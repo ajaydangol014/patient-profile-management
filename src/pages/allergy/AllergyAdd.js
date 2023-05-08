@@ -12,7 +12,7 @@ const AllergyAdd = () => {
 
   const submitHandler = async (values, { setSubmitting }) => {
     const payload = {
-      patient_name: values.patient_name,
+      allergy_name: values.allergy_name,
       userId: 1,
     };
 
@@ -29,7 +29,7 @@ const AllergyAdd = () => {
     }
   };
   return (
-    <WellContainer title="Add New Patient">
+    <WellContainer title="Add Allergy">
       <Formik
         initialValues={allergyInitialValues}
         validationSchema={allergyValidationSchema}
