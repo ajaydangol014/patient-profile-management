@@ -21,7 +21,9 @@ exports.getPatientById = async function (req, res, next) {
 
 exports.savePatientProfile = async function (req, res, next) {
   try {
-    const patient = await PatientServices.savePatientProfile();
+    const patient = await PatientServices.savePatientProfile({
+      data: req.body,
+    });
     res.json({ status: 200, data: patient, message: "Saved" });
   } catch (error) {
     next(error);
@@ -29,8 +31,14 @@ exports.savePatientProfile = async function (req, res, next) {
 };
 
 exports.updatePatientProfile = async function (req, res, next) {
+  const { id } = req.params;
   try {
-    const patient = await PatientServices.updatePatientProfile();
+    const patient = await PatientServices.updatePatientProfile(
+      {
+        data: req.body,
+      },
+      id
+    );
     res.json(patient);
   } catch (error) {
     next(error);

@@ -8,19 +8,18 @@ import { profileValidationSchema } from "../../constants/constant";
 
 const ProfileEdit = () => {
   const { id } = useParams();
-  const isProfileAdd = !id;
-  const profileInitialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    designation: "",
-  };
   const [user, setUsers] = useState({});
-  const fetchUserData = () => {
-    fetch("https://dummyjson.com/users").then((response) => {
-      return response.json();
-      setUsers(response.json);
-    });
+  const fields = ["id", "firstName", "lastName", "email"];
+
+  const fetchUserData = async (req, res) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/patient-profile/${id}`
+      );
+      setUsers(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const submitHandler = (values, { setSubmitting }) => {
@@ -29,13 +28,22 @@ const ProfileEdit = () => {
 
   const editPatient = async (values, setSubmitting) => {
     const payload = {
-      firstName: values.firstName,
-      lastName: values.lastName,
+      patient_name: values.name,
+      age: values.age,
       email: values.email,
+      dob: values.dob,
+      special_attention: values.special_attention,
+      userId: 1,
+      allergyId: 1,
+      profile_image: "",
     };
 
     try {
-      const response = await axios.update("url", payload);
+      const response = await axios.post(
+        `http://localhost:5000/api/patient-profile/edit/${id}`,
+        payload
+      );
+      console.log(response);
     } catch (e) {
       console.log(e);
     } finally {
@@ -43,24 +51,29 @@ const ProfileEdit = () => {
     }
   };
 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const profileInitialValues = {
+    patient_name: user.name,
+    age: user.age,
+    email: user.email,
+    dob: user.dob,
+    special_attention: user.special_attention,
+    userId: 1,
+    allergyId: 1,
+  };
+
   return (
     <WellContainer title="Edit Patient">
       <Formik
+        enableReinitialize
         initialValues={profileInitialValues}
         validationSchema={profileValidationSchema}
         onSubmit={submitHandler}
       >
-        {(formik) => (
-          // useEffect(()=>{
-          //   fetchUserData();
-          //   if(!isProfileAdd){
-          //     const fields = ['id','firstName', 'lastName', 'email'];
-          //     fields.forEach(field => formik.setFieldValue(field, user[field], false));
-          //   }
-          // },[]);
-
-          <ProfileForm formik={formik} />
-        )}
+        {(formik) => <ProfileForm formik={formik} />}
       </Formik>
     </WellContainer>
   );

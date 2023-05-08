@@ -39,7 +39,7 @@ exports.savePatientProfile = async function (query) {
 
 exports.updatePatientProfile = async function (query, id) {
   try {
-    const patientData = await prisma.PatientProfile.patch({
+    const patientData = await prisma.PatientProfile.update({
       where: {
         id: Number(id),
       },
