@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id      Int      @id @default(autoincrement())
+  name    String?
+  email   String   @unique
+  password String?
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  allergy Allergy[]
+  patientProfile PatientProfile[]
+}
+
+
+model Allergy{
+   id      Int      @id @default(autoincrement())
+   user User @relation(fields:[userId], references:[user_id])
+   allergy_name    String?
+   userId    Int
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+   patientProfile PatientProfile[]
+}
+
+model PatientProfile{
+   id      Int      @id @default(autoincrement())
+   user User @relation(fields:[userId], references:[user_id])
+   userId    Int
+   allergy Allergy @relation(fields:[allergy_id], references:[id])
+   allergy_id    Int
+   patient_name    String
+   age Int
+   dob  String?
+   profile_image String?
+   email   String   @unique
+   special_attention Boolean @default(false)
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
+}
