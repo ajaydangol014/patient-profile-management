@@ -2,32 +2,23 @@ import axios from "axios";
 import { Formik } from "formik";
 import React from "react";
 import WellContainer from "../../components/well/WellContainer";
-import ProfileForm from "./ProfileForm";
-import { profileValidationSchema } from "../../constants/constant";
+import { allergyValidationSchema } from "../../constants/constant";
+import AllergyForm from "./AllergyForm";
 
-const ProfileAdd = () => {
-  const profileInitialValues = {
-    patient_name: "",
-    age: "",
-    dob: "",
-    email: "",
-    special_attention: "",
+const AllergyAdd = () => {
+  const allergyInitialValues = {
+    allergy_name: "",
   };
 
   const submitHandler = async (values, { setSubmitting }) => {
     const payload = {
       patient_name: values.patient_name,
       userId: 1,
-      allergy_id: 1,
-      age: Number(values.age),
-      dob: values.dob,
-      email: values.email,
-      special_attention: false,
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/patient-profile/add",
+        "http://localhost:5000/api/allergy/add",
         payload
       );
       console.log(response.data);
@@ -40,14 +31,14 @@ const ProfileAdd = () => {
   return (
     <WellContainer title="Add New Patient">
       <Formik
-        initialValues={profileInitialValues}
-        validationSchema={profileValidationSchema}
+        initialValues={allergyInitialValues}
+        validationSchema={allergyValidationSchema}
         onSubmit={submitHandler}
       >
-        {(formik) => <ProfileForm formik={formik} />}
+        {(formik) => <AllergyForm formik={formik} />}
       </Formik>
     </WellContainer>
   );
 };
 
-export default ProfileAdd;
+export default AllergyAdd;
