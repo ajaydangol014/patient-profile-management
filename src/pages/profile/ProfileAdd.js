@@ -1,12 +1,13 @@
 import axios from "axios";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Formik } from "formik";
 import React from "react";
-import * as Yup from "yup";
 import WellContainer from "../../components/well/WellContainer";
-import { profileValidationSchema } from "./constant";
 import ProfileForm from "./ProfileForm";
+import { profileValidationSchema } from "../../constants/constant";
+import { useNavigate } from "react-router";
 
 const ProfileAdd = () => {
+  const navigate = useNavigate();
   const profileInitialValues = {
     patient_name: "",
     age: "",
@@ -31,7 +32,7 @@ const ProfileAdd = () => {
         "http://localhost:5000/api/patient-profile/add",
         payload
       );
-      console.log(response.data);
+      navigate("/profile");
     } catch (e) {
       console.log(e);
     } finally {
