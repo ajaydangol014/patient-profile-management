@@ -9,6 +9,16 @@ exports.getPatient = async function (req, res, next) {
   }
 };
 
+exports.getPatientById = async function (req, res, next) {
+  const { id } = req.params;
+  try {
+    const patient = await PatientServices.getPatientById(id);
+    res.json({ status: 200, data: patient, message: "Retrieved" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.savePatientProfile = async function (req, res, next) {
   try {
     const patient = await PatientServices.savePatientProfile();

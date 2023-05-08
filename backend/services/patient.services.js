@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-exports.getPatient = async function (query) {
+exports.getPatient = async function () {
   try {
     const patientProfile = await prisma.PatientProfile.findMany({
       include: { allergy: true },
@@ -9,6 +9,22 @@ exports.getPatient = async function (query) {
     return patientProfile;
   } catch (error) {
     throw Error("Error while retrieving Patient Profile");
+  }
+};
+
+exports.getPatientById = async function (id) {
+  try {
+    const patientData = await prisma.PatientProfile.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        allergy: true,
+      },
+    });
+    return patientData;
+  } catch (error) {
+    throw Error("Error while updating Patient Profile");
   }
 };
 
@@ -27,7 +43,7 @@ exports.updatePatientProfile = async function (query, id) {
       where: {
         id: Number(id),
       },
-      data: query,
+      query,
       include: {
         allergy: true,
       },

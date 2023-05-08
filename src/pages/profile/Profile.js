@@ -23,8 +23,8 @@ const Profile = () => {
         return response.json();
       })
       .then((data) => {
-        setUsers(data);
-        console.log(data);
+        const { data: userData } = data;
+        setUsers(data.data);
       })
       .catch((error) => {
         console.log(error);
