@@ -10,19 +10,21 @@ const Profile = () => {
   const [inputVal, setInputVal] = useState("");
   const [open, setOpen] = useState(false);
   const [id, setId] = useState();
-  const filteredSearchData = [
-    users.filter((user) =>
-      user.firstName.toLowerCase().includes(inputVal.toLowerCase())
-    ),
-  ];
+
+  const filteredSearchData = users.filter((user) =>
+    user.patient_name.toLowerCase().includes(inputVal.toLowerCase())
+  );
+  console.log(filteredSearchData);
   const tableData = filteredSearchData;
+
   const fetchUserData = () => {
-    fetch("https://dummyjson.com/users")
+    fetch("http://localhost:5000/api/patient-profile")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setUsers(data.users);
+        setUsers(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -68,17 +70,17 @@ const Profile = () => {
       accessor: "id", // accessor is the "key" in the data
     },
     {
-      Header: "First Name",
-      accessor: "firstName",
-    },
-    {
-      Header: "Last Name",
-      accessor: "lastName",
+      Header: "Patient Name",
+      accessor: "patient_name",
     },
 
     {
       Header: "Age",
       accessor: "age",
+    },
+    {
+      Header: "Date of Birth",
+      accessor: "dob",
     },
     {
       Header: "Email",
@@ -127,7 +129,7 @@ const Profile = () => {
           Add New Patient
         </Link>
       </div>
-      <Table columns={columns} data={tableData[0]} />
+      <Table columns={columns} data={tableData} />
       {open && (
         <Dialog onClose={() => setOpen(false)} handleEvent={deleteEvent} />
       )}
