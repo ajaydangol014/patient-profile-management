@@ -10,3 +10,9 @@ export const profileValidationSchema = Yup.object({
   dob: Yup.string().required("Required"),
   email: Yup.string().email("Invalid Email Address").required("Required"),
 });
+
+export const userValidationSchema = Yup.object({
+  name: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid Email Address").required("Required"),
+  password: Yup.string().required("Required"),
+});

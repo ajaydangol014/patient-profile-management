@@ -8,7 +8,15 @@ router.post("/allergy/add", AllergyController.getAllergy);
 //Patient Profile
 const PatientController = require("../controllers/patient.controllers");
 router.get("/patient-profile", PatientController.getPatient);
+router.get("/patient-profile/:id", PatientController.getPatientById);
 router.post("/patient-profile/add", PatientController.savePatientProfile);
-router.patch("/patient-profile/:id", PatientController.updatePatientProfile);
+router.patch(
+  "/patient-profile/edit/:id",
+  PatientController.updatePatientProfile
+);
+
+//User Profile
+const UserController = require("../controllers/user.controllers");
+router.post("/user/add", UserController.saveUser);
 
 module.exports = router;
