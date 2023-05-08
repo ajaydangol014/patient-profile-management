@@ -10,9 +10,8 @@ exports.getAllergy = async function (req, res, next) {
 };
 
 exports.saveAllergy = async function (req, res, next) {
-  console.log(req);
   try {
-    const allergy = await AllergyService.saveAllergy({ req });
+    const allergy = await AllergyService.saveAllergy({ data: req.body });
     res.json(allergy);
   } catch (error) {
     next(error);
