@@ -36,6 +36,9 @@ const App = () => {
                 <Link to="/profile" className="menu-group__nodes__single">
                   User Profile
                 </Link>
+                <Link to="/allergy" className="menu-group__nodes__single">
+                  Allergy
+                </Link>
               </div>
             </div>
             <div className="guide-content">
