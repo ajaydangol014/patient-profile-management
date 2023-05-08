@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
 export const profileValidationSchema = Yup.object({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
+  patient_name: Yup.string().required("Required"),
+  age: Yup.string().required("Required"),
+  dob: Yup.string().required("Required"),
   email: Yup.string().email("Invalid Email Address").required("Required"),
 });
