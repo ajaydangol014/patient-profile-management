@@ -4,8 +4,10 @@ import React from "react";
 import WellContainer from "../../components/well/WellContainer";
 import ProfileForm from "./ProfileForm";
 import { profileValidationSchema } from "../../constants/constant";
+import { useNavigate } from "react-router";
 
 const ProfileAdd = () => {
+  const navigate = useNavigate();
   const profileInitialValues = {
     patient_name: "",
     age: "",
@@ -30,7 +32,7 @@ const ProfileAdd = () => {
         "http://localhost:5000/api/patient-profile/add",
         payload
       );
-      console.log(response.data);
+      navigate("/profile");
     } catch (e) {
       console.log(e);
     } finally {
