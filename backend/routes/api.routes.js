@@ -78,4 +78,8 @@ router.patch("/patient-profile/:id", async (req, res, next) => {
   }
 });
 
+//retrieve data from AllergyController
+const AllergyController = require("../controllers/allergy.controllers");
+router.get("/allergy", AllergyController.getAllergy);
+
 module.exports = router;
