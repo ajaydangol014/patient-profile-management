@@ -18,5 +18,6 @@ router.post(
 //User Profile
 const UserController = require("../controllers/user.controllers");
 router.post("/user/add", UserController.saveUser);
+router.post("/user/", UserController.getUser);
 
 module.exports = router;
