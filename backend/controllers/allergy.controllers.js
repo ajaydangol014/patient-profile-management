@@ -17,3 +17,13 @@ exports.saveAllergy = async function (req, res, next) {
     next(error);
   }
 };
+
+exports.deleteAllergy = async function (req, res, next) {
+  const { id } = req.params;
+  try {
+    const patient = await AllergyService.deleteAllergy(req.body, id);
+    res.json(patient);
+  } catch (error) {
+    next(error);
+  }
+};

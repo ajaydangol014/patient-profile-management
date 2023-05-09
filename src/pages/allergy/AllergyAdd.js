@@ -4,8 +4,10 @@ import React from "react";
 import WellContainer from "../../components/well/WellContainer";
 import { allergyValidationSchema } from "../../constants/constant";
 import AllergyForm from "./AllergyForm";
+import { useNavigate } from "react-router-dom";
 
 const AllergyAdd = () => {
+  const navigate = useNavigate();
   const allergyInitialValues = {
     allergy_name: "",
   };
@@ -21,7 +23,9 @@ const AllergyAdd = () => {
         "http://localhost:5000/api/allergy/add",
         payload
       );
-      console.log(response.data);
+      if (response.status == 200) {
+        navigate("/allergy");
+      }
     } catch (e) {
       console.log(e);
     } finally {

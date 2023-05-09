@@ -5,14 +5,13 @@ import axios from "axios";
 import Dialog from "../../components/dialog/Dialog";
 
 const Allergy = () => {
-  const [users, setUsers] = useState([]);
+  const [allergy, setAllergy] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const [open, setOpen] = useState(false);
   const [id, setId] = useState();
-  const filteredSearchData = users.filter((user) =>
-    user.allergy_name.toLowerCase().includes(inputVal.toLowerCase())
+  const filteredSearchData = allergy.filter((data) =>
+    data.allergy_name.toLowerCase().includes(inputVal.toLowerCase())
   );
-  console.log(filteredSearchData);
   const tableData = filteredSearchData;
 
   const fetchUserData = () => {
@@ -21,7 +20,7 @@ const Allergy = () => {
         return response.json();
       })
       .then((data) => {
-        setUsers(data);
+        setAllergy(data);
       })
       .catch((error) => {
         console.log(error);
@@ -37,10 +36,24 @@ const Allergy = () => {
     setInputVal(value);
   };
 
+  const deleteAllergyById = async (id) => {
+    const payload = {
+      delFlg: true,
+    };
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/allergy/delete/${id}`,
+        payload
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const deleteEvent = () => {
-    // deletePatientProfile(id);
-    const filterRetrieveData = users.filter((x) => x.id !== Number(id));
-    setUsers(filterRetrieveData);
+    deleteAllergyById(id);
+    const filterRetrieveData = allergy.filter((x) => x.id !== Number(id));
+    setAllergy(filterRetrieveData);
     setOpen(false);
   };
 
