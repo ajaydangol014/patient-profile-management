@@ -30,6 +30,7 @@ model Allergy{
    userId    Int
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
+   delFlg Boolean @default(false)
    patientProfile PatientProfile[]
 }
 
@@ -45,6 +46,7 @@ model PatientProfile{
    profile_image String?
    email   String   @unique
    special_attention Boolean @default(false)
+   delFlg Boolean @default(false)
    createdAt DateTime @default(now())
    updatedAt DateTime @updatedAt
 }
