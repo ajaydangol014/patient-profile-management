@@ -28,7 +28,7 @@ const ProfileEdit = () => {
 
   const editPatient = async (values, setSubmitting) => {
     const payload = {
-      patient_name: values.name,
+      patient_name: values.patient_name,
       age: values.age,
       email: values.email,
       dob: values.dob,
@@ -36,6 +36,7 @@ const ProfileEdit = () => {
       userId: 1,
       allergyId: 1,
       profile_image: "",
+      delFlg: false,
     };
 
     try {
@@ -56,13 +57,14 @@ const ProfileEdit = () => {
   }, []);
 
   const profileInitialValues = {
-    patient_name: user.name,
+    patient_name: user.patient_name,
     age: user.age,
     email: user.email,
     dob: user.dob,
     special_attention: user.special_attention,
     userId: 1,
     allergyId: 1,
+    delFlg: false,
   };
 
   return (
