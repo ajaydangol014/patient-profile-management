@@ -14,7 +14,6 @@ const Profile = () => {
   const filteredSearchData = users.filter((user) =>
     user.patient_name.toLowerCase().includes(inputVal.toLowerCase())
   );
-  console.log(filteredSearchData);
   const tableData = filteredSearchData;
 
   const fetchUserData = () => {
@@ -40,19 +39,24 @@ const Profile = () => {
     setInputVal(value);
   };
 
-  const deletePatientProfile = async (id) => {
+  const deletePatientProfile = async (id, value) => {
     const payload = {
-      id: id,
+      delFlg: true,
     };
     try {
-      const response = await axios.delete("url", payload);
+      const response = await axios.post(
+        `http://localhost:5000/api/patient-profile/delete/${id}`,
+        payload
+      );
+      return response.json();
     } catch (e) {
       console.log(e);
     }
   };
 
   const deleteEvent = () => {
-    // deletePatientProfile(id);
+    const getUserIdData = users.find((x) => x.id == Number(id));
+    deletePatientProfile(id, getUserIdData);
     const filterRetrieveData = users.filter((x) => x.id !== Number(id));
     setUsers(filterRetrieveData);
     setOpen(false);

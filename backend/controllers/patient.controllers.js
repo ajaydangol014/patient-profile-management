@@ -33,12 +33,7 @@ exports.savePatientProfile = async function (req, res, next) {
 exports.updatePatientProfile = async function (req, res, next) {
   const { id } = req.params;
   try {
-    const patient = await PatientServices.updatePatientProfile(
-      {
-        data: req.body,
-      },
-      id
-    );
+    const patient = await PatientServices.updatePatientProfile(req.body, id);
     res.json(patient);
   } catch (error) {
     next(error);
@@ -46,8 +41,9 @@ exports.updatePatientProfile = async function (req, res, next) {
 };
 
 exports.deletePatientProfile = async function (req, res, next) {
+  const { id } = req.params;
   try {
-    const patient = await PatientServices.deletePatientProfile(req.body);
+    const patient = await PatientServices.deletePatientProfile(req.body, id);
     res.json(patient);
   } catch (error) {
     next(error);

@@ -5,6 +5,9 @@ exports.getPatient = async function () {
   try {
     const patientProfile = await prisma.PatientProfile.findMany({
       include: { allergy: true },
+      where: {
+        delFlg: false,
+      },
     });
     return patientProfile;
   } catch (error) {
@@ -43,7 +46,7 @@ exports.updatePatientProfile = async function (query, id) {
       where: {
         id: Number(id),
       },
-      query,
+      data: query,
       include: {
         allergy: true,
       },
@@ -56,9 +59,13 @@ exports.updatePatientProfile = async function (query, id) {
 
 exports.deletePatientProfile = async function (query, id) {
   try {
-    const deletePatientProfile = await prisma.PatientProfile.delete({
+    const deletePatientProfile = await prisma.PatientProfile.update({
       where: {
         id: Number(id),
+      },
+      data: query,
+      include: {
+        allergy: true,
       },
     });
     return deletePatientProfile;

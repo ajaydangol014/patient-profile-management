@@ -14,6 +14,10 @@ router.post(
   "/patient-profile/edit/:id",
   PatientController.updatePatientProfile
 );
+router.post(
+  "/patient-profile/delete/:id",
+  PatientController.deletePatientProfile
+);
 
 //User Profile
 const UserController = require("../controllers/user.controllers");
