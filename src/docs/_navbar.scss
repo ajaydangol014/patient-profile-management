@@ -1,19 +1,24 @@
 .navbar {
   padding: 20px 0;
-  background-color: getColor("primary.base");
-  color: getColor("white.base");
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  border: 1px solid getColor("grey.7");
+  // background-color: getColor("white.base");
+  color: getColor("primary.base");
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 1;
+  // border: 1px solid getColor("grey.7");
 
   @include e(header) {
     h1 {
       font-size: 16px;
-      color: getColor("white.base");
+      color: getColor("primary.base");
     }
+  }
+
+  @include e(item) {
+    color: black;
+    font-weight: 600;
   }
 
   @include e(flex) {

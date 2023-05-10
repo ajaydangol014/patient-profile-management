@@ -4,10 +4,6 @@
 @import "navbar";
 @import "dialog";
 
-body {
-  background: getColor("secondary.lighter") !important;
-}
-
 .container {
   max-width: 1380px;
 }
@@ -20,19 +16,23 @@ code {
 
 //Sidebar
 .sidebar {
-  width: 250px;
-  height: calc(100vh - 80px);
+  width: 300px;
+  height: 100vh;
   position: sticky;
-  padding: getSpacing("4x") getSpacing("6x");
-  background-color: getColor("white.base");
+  background-color: #f1f1f1;
   overflow-y: auto;
   color: getColor("black.base");
   border: 1px solid getColor("grey.7");
-  top: 80px;
+  top: 0;
+  padding: getSpacing("4x") getSpacing("6x");
 }
 
-.guide-wrapper {
-  padding-top: 80px;
+.sidebar__flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+  height: calc(100vh - 100px);
 }
 
 .guide-content {
@@ -236,12 +236,14 @@ code {
   @include e(nodes) {
     padding: 0;
     @include e(single) {
-      color: getColor("primary.base");
+      color: #343434;
       display: block;
-      margin-bottom: 12px;
       font-weight: 600;
+      padding: getSpacing("4x") getSpacing("6x");
+      border-radius: 10px;
       &:hover {
-        color: rgba($black, 0.8);
+        color: getColor("white.base");
+        background-color: getColor("primary.base");
       }
       @include m(active) {
         color: getColor("primary.base");

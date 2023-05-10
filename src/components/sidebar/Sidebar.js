@@ -13,25 +13,33 @@ const Sidebar = (props) => {
 
   return (
     <div className="sidebar sidebar--bordered-right-1x">
-      <div className="menu-group">
-        <Link
-          to="/dashboard"
-          className="menu-group__nodes__single"
-          activeClassName="menu-group__nodes__single--active"
-        >
-          Dashboard
-        </Link>
-        <Link to="/profile" className="menu-group__nodes__single">
-          Patient Profile
-        </Link>
-        <Link to="/allergy" className="menu-group__nodes__single">
-          Allergy
-        </Link>
+      <div className="navbar__header">
+        <h1>Patient Profile Management</h1>
       </div>
+      <div className="sidebar__flex">
+        <div className="menu-group">
+          <Link
+            to="/dashboard"
+            className="menu-group__nodes__single"
+            activeClassName="menu-group__nodes__single--active"
+          >
+            Dashboard
+          </Link>
+          <Link to="/profile" className="menu-group__nodes__single">
+            Patient Profile
+          </Link>
+          <Link to="/allergy" className="menu-group__nodes__single">
+            Allergy
+          </Link>
+        </div>
 
-      <div>
-        <div className="logout menu-group__nodes__single" onClick={logoutUser}>
-          Logout
+        <div>
+          <div
+            className="logout menu-group__nodes__single"
+            onClick={logoutUser}
+          >
+            Logout
+          </div>
         </div>
       </div>
     </div>

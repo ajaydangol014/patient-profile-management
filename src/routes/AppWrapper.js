@@ -9,11 +9,11 @@ const AppWrapper = () => {
 
   return (
     <>
-      <Navbar name={loginUserdata.name} />
       <div className="">
         <div className="guide-wrapper d-flex">
           <Sidebar />
           <div className="guide-content">
+            <Navbar name={loginUserdata.name} />
             <Outlet />
           </div>
         </div>

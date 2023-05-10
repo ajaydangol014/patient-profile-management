@@ -5,9 +5,7 @@ const Navbar = (props) => {
   return (
     <nav className="navbar">
       <div className=" navbar__flex px-4x">
-        <div className="navbar__header">
-          <h1>Patient Profile Management</h1>
-        </div>
+        <div className="navbar__header"></div>
         <div className="navbar__list">
           <Link to="/" className="navbar__item">
             {props.name}
