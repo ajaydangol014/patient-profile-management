@@ -5,7 +5,7 @@ export function getUserId() {
   return userid;
 }
 
-export function getSpecialAttention() {
+export function getSpecialAttention(key = "") {
   const options = [
     {
       id: "required",
@@ -18,5 +18,12 @@ export function getSpecialAttention() {
       value: "Not Required",
     },
   ];
+  if (key !== "") {
+    const data = options.find((x) => String(x.key) === String(key));
+    if (data) {
+      return data.value;
+    }
+    return;
+  }
   return options;
 }

@@ -4,6 +4,7 @@ import Table from "../../components/table/Table";
 import axios from "axios";
 import Dialog from "../../components/dialog/Dialog";
 import { loadUserProfileData } from "../../utils/AuthUserUtils";
+import { getSpecialAttention } from "../../utils/utils";
 
 // import "./profile.css";
 const Profile = () => {
@@ -96,6 +97,13 @@ const Profile = () => {
     {
       Header: "Special Attention",
       accessor: "special_attention",
+      Cell: (cell) => {
+        const specialData = getSpecialAttention(
+          cell.row.original.special_attention
+        );
+        // console.log(specialData, "spceial cell");
+        return <div>{specialData}</div>;
+      },
     },
     {
       width: 300,
