@@ -38,7 +38,7 @@ const SignupForm = (props) => {
       <div className="form-group">
         <label htmlFor="password">Password</label>
         <Field
-          type="text"
+          type="password"
           name="password"
           id="password"
           onChange={props.formik.handleChange}

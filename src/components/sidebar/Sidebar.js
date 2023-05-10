@@ -14,7 +14,9 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar sidebar--bordered-right-1x">
       <div className="navbar__header">
-        <h1>Patient Profile Management</h1>
+        <h1>
+          Patient Profile <span>MANAGEMENT</span>
+        </h1>
       </div>
       <div className="sidebar__flex">
         <div className="menu-group">
