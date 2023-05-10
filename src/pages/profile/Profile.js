@@ -94,24 +94,26 @@ const Profile = () => {
       width: 300,
       Header: "Action",
       accessor: "action",
-      Cell: (cell) => (
-        <div className="action-btn">
-          <Link
-            to={`/profile/edit/${cell.row.id}`}
-            value={cell.row.id}
-            className="btn btn--success"
-          >
-            Edit
-          </Link>
-          <button
-            value={cell.row.id}
-            className="btn btn--danger"
-            onClick={openDialog}
-          >
-            Delete
-          </button>
-        </div>
-      ),
+      Cell: (cell) => {
+        return (
+          <div className="action-btn">
+            <Link
+              to={`/profile/edit/${cell.row.original.id}`}
+              value={cell.row.id}
+              className="btn btn--success"
+            >
+              Edit
+            </Link>
+            <button
+              value={cell.row.original.id}
+              className="btn btn--danger"
+              onClick={openDialog}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      },
     },
   ];
 

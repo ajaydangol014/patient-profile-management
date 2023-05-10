@@ -29,18 +29,18 @@ const ProfileEdit = () => {
   const editPatient = async (values, setSubmitting) => {
     const payload = {
       patient_name: values.patient_name,
-      age: values.age,
+      age: Number(values.age),
       email: values.email,
       dob: values.dob,
       special_attention: values.special_attention,
       userId: 1,
-      allergyId: 1,
+      allergy_id: 1,
       profile_image: "",
       delFlg: false,
     };
 
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         `http://localhost:5000/api/patient-profile/edit/${id}`,
         payload
       );
