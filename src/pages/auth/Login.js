@@ -35,17 +35,29 @@ const Login = () => {
     }
   };
   return (
-    <div className="well">
-      <Formik
-        initialValues={userInitialValues}
-        validationSchema={loginValidationSchema}
-        onSubmit={submitHandler}
-      >
-        {(formik) => <LoginForm formik={formik} />}
-      </Formik>
+    <div className="main-body">
+      <div className="well well--md">
+        <div className="title">
+          <h4>Welcome Back!!</h4>
+          <span className="subtitle">
+            Log in into your existed account of{" "}
+            <strong>Patient Profile Managment.</strong>
+          </span>
+        </div>
+        <div className="main-body__content">
+          <Formik
+            initialValues={userInitialValues}
+            validationSchema={loginValidationSchema}
+            onSubmit={submitHandler}
+          >
+            {(formik) => <LoginForm formik={formik} />}
+          </Formik>
 
-      <div className="signup">
-        <Link to={"/signup"}>Signup</Link>
+          <div className="signup-content">
+            If you haven't registered yet. Please do{" "}
+            <Link to={"/signup"}>Signup</Link> first.
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -31,12 +31,12 @@ const LoginForm = (props) => {
           {...props.formik.getFieldProps("password")}
         />
         <div className="error-message">
-          <ErrorMessage name="lastName" />
+          <ErrorMessage name="password" />
         </div>
       </div>
 
-      <button type="submit" className="btn btn-primary">
-        Submit
+      <button type="submit" className="btn btn-primary w--100">
+        Login
       </button>
     </Form>
   );

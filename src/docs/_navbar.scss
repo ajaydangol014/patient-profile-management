@@ -1,10 +1,13 @@
 .navbar {
   padding: 20px 0;
-  background-color: getColor("grey.4");
-  color: getcolor("primary.base");
-  position: sticky;
+  background-color: getColor("primary.base");
+  color: getColor("white.base");
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1;
+  border: 1px solid getColor("grey.7");
 
   @include e(header) {
     h1 {
@@ -23,10 +26,6 @@
     top: 0;
     z-index: 2;
   }
-  @include m(bordered-bottom) {
-    border-bottom: 1px solid #9cb2bf;
-  }
-
 
   @include e(left) {
     display: flex;
