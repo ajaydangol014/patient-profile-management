@@ -14,7 +14,7 @@ exports.saveUser = async function (query) {
       throw Error("Email address must be unique");
     }
 
-    const hashPassword = bcrypt.hash(password, 10); //hashing the password
+    const hashPassword = await bcrypt.hash(password, 10); //hashing the password
 
     const userData = await prisma.User.create({
       data: {

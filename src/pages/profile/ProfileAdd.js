@@ -1,30 +1,33 @@
 import axios from "axios";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import WellContainer from "../../components/well/WellContainer";
 import ProfileForm from "./ProfileForm";
 import { profileValidationSchema } from "../../constants/constant";
 import { useNavigate } from "react-router";
+import { getUserId } from "../../utils/utils";
 
 const ProfileAdd = () => {
   const navigate = useNavigate();
+  const loginUserID = getUserId();
   const profileInitialValues = {
     patient_name: "",
     age: "",
     dob: "",
     email: "",
     special_attention: "",
+    allergy_id: "",
   };
 
   const submitHandler = async (values, { setSubmitting }) => {
     const payload = {
       patient_name: values.patient_name,
-      userId: 1,
-      allergy_id: 1,
+      userId: loginUserID,
+      allergy_id: Number(values.allergy_id),
       age: Number(values.age),
       dob: values.dob,
       email: values.email,
-      special_attention: false,
+      special_attention: Boolean(values.special_attention),
     };
 
     try {

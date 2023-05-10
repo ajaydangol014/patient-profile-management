@@ -2,14 +2,16 @@ import axios from "axios";
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import WellContainer from "../../components/well/WellContainer";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProfileForm from "./ProfileForm";
 import { profileValidationSchema } from "../../constants/constant";
+import { getUserId } from "../../utils/utils";
 
 const ProfileEdit = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const loginUserID = getUserId();
   const [user, setUsers] = useState({});
-  const fields = ["id", "firstName", "lastName", "email"];
 
   const fetchUserData = async (req, res) => {
     try {
@@ -27,14 +29,15 @@ const ProfileEdit = () => {
   };
 
   const editPatient = async (values, setSubmitting) => {
+    console.log(values, "edit");
     const payload = {
       patient_name: values.patient_name,
       age: Number(values.age),
       email: values.email,
       dob: values.dob,
-      special_attention: values.special_attention,
-      userId: 1,
-      allergy_id: 1,
+      special_attention: Boolean(values.special_attention),
+      userId: loginUserID,
+      allergy_id: Number(values.allergy_id),
       profile_image: "",
       delFlg: false,
     };
@@ -45,6 +48,7 @@ const ProfileEdit = () => {
         payload
       );
       console.log(response);
+      navigate("/profile");
     } catch (e) {
       console.log(e);
     } finally {
@@ -63,7 +67,7 @@ const ProfileEdit = () => {
     dob: user.dob,
     special_attention: user.special_attention,
     userId: 1,
-    allergyId: 1,
+    allergy_id: user.allergy_id,
     delFlg: false,
   };
 

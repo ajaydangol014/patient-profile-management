@@ -1,6 +1,5 @@
 import jwtDecode from "jwt-decode";
 import { JWT_LOGIN_TOKEN } from "../constants/constant";
-import { useNavigate } from "react-router-dom";
 
 export function loadUserProfileData() {
   try {

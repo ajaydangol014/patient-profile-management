@@ -25,7 +25,6 @@ const Profile = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const { data: userData } = data;
         setUsers(data.data);
       })
@@ -87,12 +86,16 @@ const Profile = () => {
       accessor: "age",
     },
     {
-      Header: "Date of Birth",
-      accessor: "dob",
-    },
-    {
       Header: "Email",
       accessor: "email",
+    },
+    {
+      Header: "Allergy",
+      accessor: "allergy_id",
+    },
+    {
+      Header: "Special Attention",
+      accessor: "special_attention",
     },
     {
       width: 300,
