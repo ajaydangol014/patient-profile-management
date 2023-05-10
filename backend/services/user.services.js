@@ -14,7 +14,7 @@ exports.saveUser = async function (query) {
       throw Error("Email address must be unique");
     }
 
-    const hashPassword = await bcrypt.hash(password, 10); //hashing the password
+    const hashPassword = bcrypt.hash(password, 10); //hashing the password
 
     const userData = await prisma.User.create({
       data: {
@@ -25,42 +25,39 @@ exports.saveUser = async function (query) {
     });
     return userData;
   } catch (error) {
-    throw Error("Error while Saving User Profile");
+    console.log(error);
+    throw Error("Error while Saving User Profile", error);
   }
 };
 
 exports.getUser = async function (query, response) {
-  const { id, email, password } = query;
+  const { email, password } = query;
   try {
     const userExist = await prisma.User.findUnique({
       where: {
         email: email,
       },
     });
-    if (userExist) {
-      const matchPassword = await bcrypt.compare(password, userExist.password);
-      if (matchPassword) {
-        const token = jwt.sign(
-          {
-            email: userExist.email,
-            password: userExist.password,
-          },
-          process.env.JWT_LOGIN_TOKEN,
-          {
-            expiresIn: "1h",
-          }
-        );
-        return response.json({
-          status: 200,
-          token: token,
-        });
-      } else {
-        throw Error("Password no match");
-      }
-    } else {
+    if (!userExist) {
       throw Error("NO user found");
     }
+
+    const matchPassword = await bcrypt.compare(password, userExist.password);
+    if (!matchPassword) {
+      throw Error("Password no match");
+    }
+    const token = jwt.sign(
+      {
+        id: userExist.id,
+        email: userExist.email,
+      },
+      process.env.JWT_LOGIN_TOKEN,
+      {
+        expiresIn: "1h",
+      }
+    );
+    return { token };
   } catch (error) {
-    console.log(error);
+    console.log("asdfasdfadsfasdfadsf", error);
   }
 };
