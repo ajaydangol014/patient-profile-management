@@ -2,9 +2,8 @@ import axios from "axios";
 import { Formik } from "formik";
 import React from "react";
 import { loginValidationSchema } from "../../constants/constant";
-import { useNavigate } from "react-router";
 import LoginForm from "./LoginForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,8 +23,11 @@ const Login = () => {
         "http://localhost:5000/api/user/",
         payload
       );
-      localStorage.setItem("token", response.data.token);
-      navigate("/dashboard");
+      console.log(response);
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.data.token);
+        navigate("/dashboard");
+      }
     } catch (e) {
       console.log(e);
     } finally {
