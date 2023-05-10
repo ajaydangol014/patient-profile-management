@@ -19,10 +19,10 @@ import Signup from "../pages/auth/Signup";
 import ProtectedRoute, { PublicRoute } from "./ProtectedRoute";
 import AppWrapper from "./AppWrapper";
 import AllergyEdit from "../pages/allergy/AllergyEdit";
+import { JWT_LOGIN_TOKEN } from "../constants/constant";
 
 export default function AppRouter() {
-  const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("token");
+  const isLoggedIn = localStorage.getItem(JWT_LOGIN_TOKEN);
 
   return (
     <>

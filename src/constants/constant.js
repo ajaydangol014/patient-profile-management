@@ -21,3 +21,5 @@ export const loginValidationSchema = Yup.object({
   email: Yup.string().email("Invalid Email Address").required("Required"),
   password: Yup.string().required("Required"),
 });
+
+export const JWT_LOGIN_TOKEN = "token";

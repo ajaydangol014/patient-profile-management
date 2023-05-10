@@ -50,6 +50,7 @@ exports.getUser = async function (query, response) {
       {
         id: userExist.id,
         email: userExist.email,
+        name: userExist.name,
       },
       process.env.JWT_LOGIN_TOKEN,
       {

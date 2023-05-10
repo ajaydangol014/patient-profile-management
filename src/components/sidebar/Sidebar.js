@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { JWT_LOGIN_TOKEN } from "../../constants/constant";
 
 const Sidebar = (props) => {
+  const navigate = useNavigate();
+
+  const logoutUser = () => {
+    localStorage.removeItem(JWT_LOGIN_TOKEN);
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="sidebar sidebar--bordered-right-1x">
       <div className="menu-group">
@@ -18,6 +27,12 @@ const Sidebar = (props) => {
         <Link to="/allergy" className="menu-group__nodes__single">
           Allergy
         </Link>
+      </div>
+
+      <div>
+        <div className="logout menu-group__nodes__single" onClick={logoutUser}>
+          Logout
+        </div>
       </div>
     </div>
   );

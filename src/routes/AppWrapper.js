@@ -2,11 +2,14 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
+import { loadUserProfileData } from "../utils/AuthUserUtils";
 
 const AppWrapper = () => {
+  const loginUserdata = loadUserProfileData();
+
   return (
     <>
-      <Navbar name="Ajay Dangol" />
+      <Navbar name={loginUserdata.name} />
       <div className="">
         <div className="guide-wrapper d-flex">
           <Sidebar />
