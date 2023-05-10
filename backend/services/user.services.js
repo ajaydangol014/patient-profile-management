@@ -48,7 +48,7 @@ exports.getUser = async function (query, response) {
     }
     const token = jwt.sign(
       {
-        id: userExist.id,
+        id: userExist.user_id,
         email: userExist.email,
         name: userExist.name,
       },

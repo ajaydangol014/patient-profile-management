@@ -15,6 +15,23 @@ exports.getPatient = async function () {
   }
 };
 
+exports.getPatientByUserId = async function (id) {
+  try {
+    const patientData = await prisma.PatientProfile.findMany({
+      where: {
+        userId: Number(id),
+      },
+      include: {
+        allergy: true,
+      },
+    });
+    return patientData;
+  } catch (error) {
+    console.log(error);
+    throw Error("Error while updating Patient Profile");
+  }
+};
+
 exports.getPatientById = async function (id) {
   try {
     const patientData = await prisma.PatientProfile.findUnique({

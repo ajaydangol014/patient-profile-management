@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Table from "../../components/table/Table";
 import axios from "axios";
 import Dialog from "../../components/dialog/Dialog";
+import { loadUserProfileData } from "../../utils/AuthUserUtils";
 
 // import "./profile.css";
 const Profile = () => {
@@ -10,18 +11,21 @@ const Profile = () => {
   const [inputVal, setInputVal] = useState("");
   const [open, setOpen] = useState(false);
   const [id, setId] = useState();
+  const loginUserData = loadUserProfileData();
+  console.log(loginUserData);
 
   const filteredSearchData = users.filter((user) =>
     user.patient_name.toLowerCase().includes(inputVal.toLowerCase())
   );
   const tableData = filteredSearchData;
 
-  const fetchUserData = () => {
-    fetch("http://localhost:5000/api/patient-profile")
+  const fetchPatientProfileData = () => {
+    fetch(`http://localhost:5000/api/patient-profile/user/${loginUserData.id}`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         const { data: userData } = data;
         setUsers(data.data);
       })
@@ -31,7 +35,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetchUserData();
+    fetchPatientProfileData();
   }, []);
 
   const filterBySearch = (event) => {
