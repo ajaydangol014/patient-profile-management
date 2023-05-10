@@ -93,6 +93,9 @@ const Profile = () => {
     {
       Header: "Allergy",
       accessor: "allergy_id",
+      Cell: (cell) => {
+        return <div>{cell.row.original.allergy.allergy_name}</div>;
+      },
     },
     {
       Header: "Special Attention",
@@ -101,7 +104,6 @@ const Profile = () => {
         const specialData = getSpecialAttention(
           cell.row.original.special_attention
         );
-        // console.log(specialData, "spceial cell");
         return <div>{specialData}</div>;
       },
     },

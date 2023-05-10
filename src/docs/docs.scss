@@ -3,6 +3,7 @@
 @import "guide";
 @import "navbar";
 @import "dialog";
+@import "dashboard";
 
 .container {
   max-width: 1380px;
@@ -19,7 +20,7 @@ code {
   width: 300px;
   height: 100vh;
   position: sticky;
-  background-color: #f1f1f1;
+  background-color: white;
   overflow-y: auto;
   color: getColor("black.base");
   border: 1px solid getColor("grey.7");
@@ -32,7 +33,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
   margin-top: 20px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 180px);
 }
 
 .guide-content {
@@ -241,12 +242,14 @@ code {
       font-weight: 600;
       padding: getSpacing("4x") getSpacing("6x");
       border-radius: 10px;
+      margin-bottom: 16px;
       &:hover {
-        color: getColor("white.base");
-        background-color: getColor("primary.base");
+        color: #343434;
+        background-color: #eaeaff;
       }
       @include m(active) {
-        color: getColor("primary.base");
+        color: #343434;
+        background-color: #eaeaff;
       }
     }
   }

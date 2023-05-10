@@ -1,0 +1,33 @@
+.dashboard {
+  @include e(content) {
+    margin-top: 16px;
+  }
+  @include e(card-group) {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include e(card) {
+    gap: 18px;
+    background-color: #f5f4ff;
+    border-radius: 10px;
+    padding: 32px;
+
+    &-count {
+      font-size: 46px;
+      font-weight: 700;
+      color: getColor("primary.base");
+      span {
+        color: black;
+        font-size: 16px;
+        margin-left: 12px;
+        font-weight: 500;
+      }
+    }
+    &-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}

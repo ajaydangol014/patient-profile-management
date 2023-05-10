@@ -10,15 +10,24 @@
   // border: 1px solid getColor("grey.7");
 
   @include e(header) {
+    border-bottom: 1px solid getColor("grey.7");
     h1 {
-      font-size: 16px;
+      text-align: center;
+      font-size: 24px;
       color: getColor("primary.base");
+      padding-bottom: 16px;
+      span {
+        color: getColor("black.base");
+      }
     }
   }
 
   @include e(item) {
+    background: #eaeaff;
     color: black;
     font-weight: 600;
+    padding: 16px;
+    border-radius: 10px;
   }
 
   @include e(flex) {
