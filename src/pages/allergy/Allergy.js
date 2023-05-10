@@ -79,14 +79,14 @@ const Allergy = () => {
       Cell: (cell) => (
         <div className="action-btn">
           <Link
-            to={`/allergy/edit/${cell.row.id}`}
+            to={`/allergy/edit/${cell.row.original.id}`}
             value={cell.row.id}
             className="btn btn--success"
           >
             Edit
           </Link>
           <button
-            value={cell.row.id}
+            value={cell.row.original.id}
             className="btn btn--danger"
             onClick={openDialog}
           >

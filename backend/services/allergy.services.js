@@ -15,12 +15,46 @@ exports.getAllergy = async function (query) {
   }
 };
 
+exports.getAllergyById = async function (id) {
+  try {
+    const allergyData = await prisma.Allergy.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        user: true,
+      },
+    });
+    return allergyData;
+  } catch (error) {
+    throw Error("Error while updating Patient Profile");
+  }
+};
+
 exports.saveAllergy = async function (query) {
   try {
     const allergyData = await prisma.Allergy.create(query);
     return allergyData;
   } catch (error) {
     throw Error("Error while retrieving Allergy data");
+  }
+};
+
+exports.updateAllergy = async function (query, id) {
+  try {
+    const patientData = await prisma.Allergy.update({
+      where: {
+        id: Number(id),
+      },
+      data: query,
+      include: {
+        user: true,
+      },
+    });
+    return patientData;
+  } catch (error) {
+    console.log(error);
+    throw Error("Error while updating Patient Profile");
   }
 };
 

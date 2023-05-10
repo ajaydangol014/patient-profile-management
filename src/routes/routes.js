@@ -18,6 +18,7 @@ import Signup from "../pages/auth/Signup";
 
 import ProtectedRoute, { PublicRoute } from "./ProtectedRoute";
 import AppWrapper from "./AppWrapper";
+import AllergyEdit from "../pages/allergy/AllergyEdit";
 
 export default function AppRouter() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export default function AppRouter() {
           <Route path="profile/edit/:id" element={<ProfileEdit />}></Route>
           <Route path="allergy/" element={<Allergy />}></Route>
           <Route path="allergy/add" element={<AllergyAdd />}></Route>
+          <Route path="allergy/edit/:id" element={<AllergyEdit />}></Route>
         </Route>
       </Routes>
     </>

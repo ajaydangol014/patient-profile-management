@@ -3,7 +3,9 @@ const router = require("express").Router();
 //retrieve data from AllergyController
 const AllergyController = require("../controllers/allergy.controllers");
 router.get("/allergy", AllergyController.getAllergy);
+router.get("/allergy/:id", AllergyController.getAllergyById);
 router.post("/allergy/add", AllergyController.saveAllergy);
+router.put("/allergy/edit/:id", AllergyController.updateAllergy);
 router.post("/allergy/delete/:id", AllergyController.deleteAllergy);
 
 //Patient Profile
