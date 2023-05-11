@@ -23,7 +23,6 @@ const Login = () => {
         "http://localhost:5000/api/user/",
         payload
       );
-      console.log(response.data.status === 200);
       if (response.data.data.token) {
         localStorage.setItem("token", response.data.data.token);
         window.location.href = "http://localhost:3000/dashboard";
