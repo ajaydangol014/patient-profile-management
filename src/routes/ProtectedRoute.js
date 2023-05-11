@@ -2,16 +2,10 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
   if (isLoggedIn) {
+    console.log(isLoggedIn);
     return children;
   }
-  return <Navigate to="/login" replace />;
-};
-
-export const PublicRoute = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
-    return children;
-  }
-  return <Navigate to="/dashboard" replace />;
+  window.location.href = "http://localhost:3000/login";
 };
 
 export default ProtectedRoute;

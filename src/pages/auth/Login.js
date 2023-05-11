@@ -23,10 +23,13 @@ const Login = () => {
         "http://localhost:5000/api/user/",
         payload
       );
-      console.log(response);
-      if (response.status === 200) {
+      console.log(response.data.status === 200);
+      if (response.data.data.token) {
         localStorage.setItem("token", response.data.data.token);
-        navigate("/dashboard", { replace: true });
+        window.location.href = "http://localhost:3000/dashboard";
+        // navigate("/dashboard", { replace: true });
+      } else {
+        console.log("error");
       }
     } catch (e) {
       console.log(e);

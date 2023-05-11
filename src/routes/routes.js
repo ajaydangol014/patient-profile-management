@@ -16,7 +16,8 @@ import Allergy from "../pages/allergy/Allergy";
 import AllergyAdd from "../pages/allergy/AllergyAdd";
 import Signup from "../pages/auth/Signup";
 
-import ProtectedRoute, { PublicRoute } from "./ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
 import AppWrapper from "./AppWrapper";
 import AllergyEdit from "../pages/allergy/AllergyEdit";
 import { JWT_LOGIN_TOKEN } from "../constants/constant";
