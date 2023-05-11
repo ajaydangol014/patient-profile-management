@@ -431,3 +431,9 @@ input[type="submit"]:hover {
     gap: 12px;
   }
 }
+
+.action-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

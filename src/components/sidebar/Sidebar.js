@@ -8,7 +8,6 @@ const Sidebar = (props) => {
 
   const logoutUser = () => {
     localStorage.removeItem(JWT_LOGIN_TOKEN);
-    navigate("/login", { replace: true });
   };
 
   return (
@@ -36,12 +35,13 @@ const Sidebar = (props) => {
         </div>
 
         <div>
-          <div
+          <Link
+            to="/login"
             className="logout menu-group__nodes__single"
             onClick={logoutUser}
           >
             Logout
-          </div>
+          </Link>
         </div>
       </div>
     </div>
