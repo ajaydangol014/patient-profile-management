@@ -41,7 +41,7 @@ const Signup = () => {
         <div className="title">
           <h4>Let's Get Started!</h4>
           <span className="subtitle">
-            Create an account to <strong>Patient Profile Managment</strong> to
+            Create an account to <strong>Patient Profile Management</strong> to
             get all the features.
           </span>
         </div>

@@ -43,7 +43,7 @@ const Login = () => {
           <h4>Welcome Back!!</h4>
           <span className="subtitle">
             Log in into your existed account of{" "}
-            <strong>Patient Profile Managment.</strong>
+            <strong>Patient Profile Management.</strong>
           </span>
         </div>
         <div className="main-body__content">

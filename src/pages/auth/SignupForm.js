@@ -47,7 +47,7 @@ const SignupForm = (props) => {
           {...props.formik.getFieldProps("password")}
         />
         <div className="error-message">
-          <ErrorMessage name="lastName" />
+          <ErrorMessage name="password" />
         </div>
       </div>
 
