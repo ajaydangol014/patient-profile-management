@@ -21,6 +21,9 @@ exports.getPatientByUserId = async function (id) {
       where: {
         userId: Number(id),
       },
+      orderBy: {
+        special_attention: "desc",
+      },
       include: {
         allergy: true,
       },
