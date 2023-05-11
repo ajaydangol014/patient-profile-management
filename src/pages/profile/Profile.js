@@ -104,7 +104,14 @@ const Profile = () => {
         const specialData = getSpecialAttention(
           cell.row.original.special_attention
         );
-        return <div>{specialData}</div>;
+        const specialClass = cell.row.original.special_attention
+          ? "pills pills--required"
+          : "pills pills--normal";
+        return (
+          <div>
+            <span className={specialClass}>{specialData}</span>
+          </div>
+        );
       },
     },
     {

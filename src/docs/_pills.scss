@@ -1,0 +1,18 @@
+.pills {
+  padding: 8px;
+  font-size: 12px;
+  background-color: getColor("primary.base");
+  color: getColor("white.base");
+  border-radius: 16px;
+  text-align: center;
+  width: auto;
+  @include m(required) {
+    background-color: #e16666;
+  }
+  @include m(normal) {
+    background-color: #747474;
+  }
+  @include m(success) {
+    background-color: getColor("success.base");
+  }
+}
