@@ -11,7 +11,6 @@ const RadioButton = (props) => {
         <Field name={name} {...rest}>
           {({ field }) => {
             return options.map((option) => {
-              console.log(field);
               return (
                 <div className="radio-button">
                   <React.Fragment key={option.key}>
@@ -20,7 +19,7 @@ const RadioButton = (props) => {
                       id={option.id}
                       {...field}
                       value={option.key}
-                      checked={field.value === option.key ? true : false}
+                      checked={field.value === option.key}
                     />
                     <label htmlFor={option.id}>{option.value}</label>
                   </React.Fragment>

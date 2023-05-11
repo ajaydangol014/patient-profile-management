@@ -9,12 +9,12 @@ export function getSpecialAttention(key = "") {
   const options = [
     {
       id: "required",
-      key: "true",
+      key: true,
       value: "Required",
     },
     {
       id: "not-required",
-      key: "false",
+      key: false,
       value: "Not Required",
     },
   ];
