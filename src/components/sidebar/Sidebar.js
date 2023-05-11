@@ -30,7 +30,6 @@ const Sidebar = (props) => {
                 ? "menu-group__nodes__single menu-group__nodes__single--active"
                 : "menu-group__nodes__single"
             }
-            activeClassName="menu-group__nodes__single--active"
           >
             Dashboard
           </Link>

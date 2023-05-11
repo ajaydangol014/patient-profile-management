@@ -65,7 +65,11 @@ const Allergy = () => {
 
   const columns = [
     {
-      Header: "Id",
+      Header: "SNo.",
+      accessor: (_row: any, i: number) => i + 1,
+    },
+    {
+      Header: "Allergy ID",
       accessor: "id", // accessor is the "key" in the data
     },
     {

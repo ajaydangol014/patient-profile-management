@@ -13,7 +13,6 @@ const Profile = () => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState();
   const loginUserData = loadUserProfileData();
-  console.log(loginUserData);
 
   const filteredSearchData = users.filter((user) =>
     user.patient_name.toLowerCase().includes(inputVal.toLowerCase())
@@ -74,7 +73,11 @@ const Profile = () => {
 
   const columns = [
     {
-      Header: "Id",
+      Header: "SNo.",
+      accessor: (_row: any, i: number) => i + 1,
+    },
+    {
+      Header: "Patient ID",
       accessor: "id", // accessor is the "key" in the data
     },
     {
