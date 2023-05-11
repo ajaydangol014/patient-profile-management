@@ -4,7 +4,9 @@ Patient Profile Management is a system where patients information are recorded b
 
 **Frontend Application Screenshot**
 **Login Page**
+
 ![Login Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/6922b9eb-f3d3-4d08-96a6-11a46e098089)
 
 **Sign Up Page**
-![Login Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/08a62281-00af-4a9b-add2-91154115040e)
+
+![Signup Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/b0a9115e-949e-41b7-b29f-d9403d7bbf3d)
