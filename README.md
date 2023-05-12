@@ -40,3 +40,13 @@ _**Allergy Page - Add New Patient Page**_
       - Prisma (Used for ORM feature such as **Prisma Client** for auto-generated and type-safe query builder for Node.js, **Prisma Migrate** for migration tool, and **Prisma Studio** which provides GUI to view and edit data in database.)
  3. Postgres
  4. RestApi
+
+**Setup Process**
+----
+1. Clone this project
+2. Run this command ```npm install``` to install related package mentiond in package.json file
+3. After installing the package, also install package in backend folder as well. Run this command ```cd backend``` to go inside the folder and install package there.
+4. In backend folder, rename .env-example with .env and add the database credential there.
+5. Run all query from migration file in your created database.
+6. If you want to view the GUI of prisma then run command in backend folder ```npx prisma studio```
+7. After installing the package and migrating all the table and data, run this command ```npm run dev``` to start the backend.
