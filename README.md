@@ -10,3 +10,25 @@ Patient Profile Management is a system where patients information are recorded b
 **Sign Up Page**
 
 ![Signup Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/b0a9115e-949e-41b7-b29f-d9403d7bbf3d)
+
+**Dashboard Page**
+
+![Dashboard Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/d86165bb-762b-47b7-92f7-4b5ce45dc5f4)
+
+**Patient Profile Page**
+
+![Patient Profile](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/1038d4bf-21a7-41e7-80b3-b2f0ac4b214f)
+
+
+**Patient Profile - Add New Patient Page**
+
+![Patient Profile Create page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/cd8a18bd-883a-4bc8-b217-6c290cd77a90)
+
+**Allergy Page**
+
+![Allergy Page](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/612d5b3d-5ede-4389-ab3b-65ce8784e3ab)
+
+**Allergy Page - Add New Patient Page**
+
+![Allergy Add](https://github.com/ajaydangol014/patient-profile-management/assets/26766776/47254d51-cdb7-42a1-bcfe-1d0c0a02869a)
+
