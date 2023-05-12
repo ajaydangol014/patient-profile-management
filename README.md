@@ -49,4 +49,6 @@ _**Allergy Page - Add New Patient Page**_
 4. In backend folder, rename .env-example with .env and add the database credential there.
 5. Run all query from migration file in your created database.
 6. If you want to view the GUI of prisma then run command in backend folder ```npx prisma studio```
-7. After installing the package and migrating all the table and data, run this command ```npm run dev``` to start the backend.
+7. After installing the package and migrating all the table and data, run this command in backend folder ```npm run dev``` to start the backend.
+8. And finally to start the frontend, run this command in the parent folder ```npm start```
+9. And you're good to go.
