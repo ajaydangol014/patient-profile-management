@@ -53,3 +53,7 @@ _**Allergy Page - Add New Patient Page**_
 7. After installing the package and migrating all the table and data, run this command in backend folder ```npm run dev``` to start the backend.
 8. And finally to start the frontend, run this command in the parent folder ```npm start```
 9. And you're good to go.
+
+**Postman Collection**
+---
+(https://www.postman.com/telecoms-explorer-84452608/workspace/patient-profile-management-ajay-dangol/request/19107374-c2e19011-87b6-40d9-b36c-25e7ad628968)
