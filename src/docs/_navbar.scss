@@ -1,0 +1,63 @@
+.navbar {
+  padding: 20px 0;
+  // background-color: getColor("white.base");
+  color: getColor("primary.base");
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 1;
+  // border: 1px solid getColor("grey.7");
+
+  @include e(header) {
+    border-bottom: 1px solid getColor("grey.7");
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: getColor("primary.base");
+      padding-bottom: 16px;
+      span {
+        color: getColor("black.base");
+      }
+    }
+  }
+
+  @include e(list) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #eaeaff;
+    padding: 16px;
+    border-radius: 10px;
+
+    .avatar-img {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: getColor("primary.base");
+      border-radius: 50%;
+    }
+  }
+
+  @include e(item) {
+    color: black;
+    font-weight: 600;
+  }
+
+  @include e(flex) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @include m(sticky) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  @include e(left) {
+    display: flex;
+    align-items: center;
+  }
+}
