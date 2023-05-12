@@ -66,6 +66,15 @@
     }
   }
 
+  @include m(view) {
+    background: getColor("secondary.base");
+    color: getColor("grey.base");
+
+    &:hover {
+      color: getColor("secondary.base");
+    }
+  }
+
   @include m(success) {
     background: getColor("success.base");
     color: getColor("white.base");

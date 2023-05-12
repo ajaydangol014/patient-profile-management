@@ -437,3 +437,12 @@ input[type="submit"]:hover {
   gap: 8px;
   align-items: center;
 }
+
+.patient-data {
+  font-size: 14px;
+  span {
+    font-weight: 600;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+}

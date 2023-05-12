@@ -5,6 +5,7 @@ import axios from "axios";
 import Dialog from "../../components/dialog/Dialog";
 import { loadUserProfileData } from "../../utils/AuthUserUtils";
 import { getSpecialAttention } from "../../utils/utils";
+import ProfileDetail from "./ProfileDetail";
 
 // import "./profile.css";
 const Profile = () => {
@@ -13,6 +14,8 @@ const Profile = () => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState();
   const loginUserData = loadUserProfileData();
+  const [openView, setOpenView] = useState(false);
+  const [viewId, setViewId] = useState();
 
   const filteredSearchData = users.filter((user) =>
     user.patient_name.toLowerCase().includes(inputVal.toLowerCase())
@@ -71,6 +74,12 @@ const Profile = () => {
     setId(value);
   };
 
+  const openViewDialog = (event) => {
+    setOpenView(true);
+    const value = event.target.value;
+    setViewId(value);
+  };
+
   const columns = [
     {
       Header: "SNo.",
@@ -124,6 +133,13 @@ const Profile = () => {
       Cell: (cell) => {
         return (
           <div className="action-btn">
+            <button
+              value={cell.row.original.id}
+              className="btn btn--view"
+              onClick={openViewDialog}
+            >
+              View
+            </button>
             <Link
               to={`/profile/edit/${cell.row.original.id}`}
               value={cell.row.id}
@@ -165,6 +181,10 @@ const Profile = () => {
       <Table columns={columns} data={tableData} />
       {open && (
         <Dialog onClose={() => setOpen(false)} handleEvent={deleteEvent} />
+      )}
+
+      {openView && (
+        <ProfileDetail onClose={() => setOpenView(false)} viewId={viewId} />
       )}
     </>
   );

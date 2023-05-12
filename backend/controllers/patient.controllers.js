@@ -59,3 +59,13 @@ exports.deletePatientProfile = async function (req, res, next) {
     next(error);
   }
 };
+
+exports.viewPatientById = async function (req, res, next) {
+  const { id } = req.params;
+  try {
+    const patient = await PatientServices.getPatientById(req.body, id);
+    res.json(patient);
+  } catch (error) {
+    next(error);
+  }
+};

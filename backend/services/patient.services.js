@@ -47,6 +47,7 @@ exports.getPatientById = async function (id) {
     });
     return patientData;
   } catch (error) {
+    console.log(error);
     throw Error("Error while updating Patient Profile");
   }
 };

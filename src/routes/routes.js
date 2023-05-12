@@ -54,7 +54,6 @@ export default function AppRouter() {
         >
           <Route path="dashboard" element={<Dashboard />}></Route>
           <Route path="profile" element={<Profile />}></Route>
-          <Route path="profile/:id" element={<ProfileDetail />}></Route>
           <Route path="profile/add" element={<ProfileAdd />}></Route>
           <Route path="profile/edit/:id" element={<ProfileEdit />}></Route>
           <Route path="allergy/" element={<Allergy />}></Route>

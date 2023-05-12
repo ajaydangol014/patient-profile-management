@@ -15,4 +15,11 @@
   @include m(success) {
     background-color: getColor("success.base");
   }
+
+  @include m(detail) {
+    background-color: black;
+    color: white;
+    width: unset;
+    display: inline;
+  }
 }

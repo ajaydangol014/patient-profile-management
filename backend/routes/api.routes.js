@@ -13,6 +13,7 @@ const PatientController = require("../controllers/patient.controllers");
 router.get("/patient-profile", PatientController.getPatient);
 router.get("/patient-profile/:id", PatientController.getPatientById);
 router.get("/patient-profile/user/:id", PatientController.getPatientByUserId);
+router.get("patient-profile/view/:id", PatientController.viewPatientById);
 router.post("/patient-profile/add", PatientController.savePatientProfile);
 router.put("/patient-profile/edit/:id", PatientController.updatePatientProfile);
 router.post(
