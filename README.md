@@ -55,6 +55,7 @@ _**Allergy Page - Add New Patient Page**_
 9. And you're good to go.
 
 **API Documentation**
+---
 
 https://www.postman.com/telecoms-explorer-84452608/workspace/patient-profile-management-ajay-dangol/documentation/19107374-b950482c-7de0-427f-9f9e-72b1e33ffc72?entity=&branch=&version=
 
