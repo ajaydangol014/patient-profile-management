@@ -15,7 +15,7 @@ const Signup = () => {
     email: "",
   };
 
-  const submitHandler = async (values, { setSubmitting }) => {
+  const submitHandler = async (values, { setSubmitting, setErrors }) => {
     const payload = {
       name: values.name,
       email: values.email,
@@ -28,7 +28,11 @@ const Signup = () => {
         "http://localhost:5000/api/user/add",
         payload
       );
-      navigate("/login");
+      if (response.data.status === 200) {
+        navigate("/login");
+      } else {
+        setErrors({ email: response.data.msg });
+      }
     } catch (e) {
       console.log(e);
     } finally {

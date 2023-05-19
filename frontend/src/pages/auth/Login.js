@@ -3,32 +3,29 @@ import { Formik } from "formik";
 import React from "react";
 import { loginValidationSchema } from "../../constants/constant";
 import LoginForm from "./LoginForm";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
   const userInitialValues = {
     password: "",
     email: "",
   };
 
-  const submitHandler = async (values, { setSubmitting }) => {
+  const submitHandler = async (values, { setSubmitting, setErrors }) => {
     const payload = {
       email: values.email,
       password: values.password,
     };
-
     try {
       const response = await axios.post(
         "http://localhost:5000/api/user/",
         payload
       );
-      if (response.data.data.token) {
+      if (response.data.data) {
         localStorage.setItem("token", response.data.data.token);
         window.location.href = "http://localhost:3000/dashboard";
-        // navigate("/dashboard", { replace: true });
       } else {
-        console.log("error");
+        setErrors({ password: response.data.msg });
       }
     } catch (e) {
       console.log(e);

@@ -3,12 +3,14 @@ const prisma = new PrismaClient();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-exports.saveUser = async function (query) {
+exports.saveUser = async function (query, response) {
   const { name, email, password } = query;
   try {
     const sameEmailCheck = await prisma.User.findUnique({
       where: { email: email },
     });
+
+    console.log(sameEmailCheck);
 
     if (sameEmailCheck) {
       throw Error("Email address must be unique");
@@ -25,8 +27,11 @@ exports.saveUser = async function (query) {
     });
     return userData;
   } catch (error) {
-    console.log(error);
-    throw Error("Error while Saving User Profile", error);
+    response.json({
+      status: 400,
+      msg: error.message,
+      token: "",
+    });
   }
 };
 
@@ -39,7 +44,7 @@ exports.getUser = async function (query, response) {
       },
     });
     if (!userExist) {
-      throw Error("NO user found");
+      throw Error("No user found");
     }
 
     const matchPassword = await bcrypt.compare(password, userExist.password);
@@ -59,6 +64,10 @@ exports.getUser = async function (query, response) {
     );
     return { token };
   } catch (error) {
-    console.log("asdfasdfadsfasdfadsf", error);
+    response.json({
+      status: 400,
+      msg: `Incorrect Email or Password.`,
+      token: "",
+    });
   }
 };
